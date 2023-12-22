@@ -1,0 +1,13 @@
+16 Even
+14 Even
+82 Even
+47 Odd
+40 Even
+93 Odd
+23 Odd
+52 Even
+47 Odd
+21 Odd
+95 Odd
+78 Even
+59 Odd

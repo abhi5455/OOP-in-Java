@@ -1,0 +1,22 @@
+Step 1: Start
+Step 2:Main function is invoked
+         a. Randomizer rz = new Randomizer
+         b. Start method is called
+Step 3:Define thread class randomizer
+         a.Run method is defined
+            i. In this run method a random number id generated
+            ii. For i = 0 to i <10 do
+         1. N = r.nextInt(100)
+         2. If n % 2 == 0
+         a. An object for even class is created and start
+            method is called
+         3. Else
+         a. An object of odd class is created and start
+            method is called
+Step 4:Define thread class even
+         a.Run method is defined
+         i.Display the square of the number
+Step 5:Define thread class odd
+         a.Run method is defined
+         i.Display the cube of the number
+Step 6:Stop

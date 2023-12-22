@@ -1,0 +1,10 @@
+Step 1:Start
+Step 2:Main function is invoked
+Step 3:Initialize integer variables num and sum
+Step 4:Accept the maximum limit from the user
+Step 5:Accept the string numbers separated with space
+Step 6:Create a string tokenizer object str
+Step 7:While (str.hasMoreTokens())
+       a. Sum = Sum + Integer.parseInt(str.nextToken()
+Step 8:Print the sum
+Step 9:Stop

@@ -1,0 +1,14 @@
+Step 1: Start
+Step 2:Create Animal interface in animalpackage
+Step 3:Create classes in herbivorous package implementing Animal
+       Interface
+Step 4:Create class cow and elephant in herbivorous package
+Step 5:Create classes in carnivorous package implementing Animal
+       Interface
+Step 6:Create class lion and bear in carnivorous package
+Step 7:Create class Main
+Step 8:Create instances of herbivorous animals
+Step 9:Create instances of carnivorous animals
+Step 10:Invokes mathods for herbivorous animals
+Step 11:Invokes methods for carnivorous animals
+Step 12:Stop

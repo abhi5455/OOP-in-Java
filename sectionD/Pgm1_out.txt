@@ -1,0 +1,6 @@
+Enter file name: File.txt
+Enter file content: Hello world
+Writing to file: File.txt
+Reading from file: File.txt
+Hello world
+File read

@@ -1,0 +1,23 @@
+Step 1:Start
+Step 2:Main function is invoked
+       1.In the try function do the following
+            a. Accept file name from the user
+            b. Create a new file with the file name
+            c. If successfully created
+               i. Print file created with file name
+            d. Else
+               i. Print file already exists
+        2.If an exception occurred catch the exception
+        3.In another try function do the following
+            e. Accept the text from the user as str
+            f. Create an object file for filewiter
+            g. Write the string to the file
+            h. Close the file
+                i. If an exception occurred catch the exception
+        4:In another try function do the following
+                j. Declare a character array ch
+                k. An object rd is created for filereader
+                l. Print the contents in the file
+                m. Close the file
+Step 3:If an exception occurred catch the exception
+Step 4:Stop

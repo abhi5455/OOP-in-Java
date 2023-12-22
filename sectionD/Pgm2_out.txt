@@ -1,0 +1,6 @@
+Enter file to read from: File.txt
+Reading from file: File.txt
+Read:
+Hello world
+Enter file to write to: File2.txt
+Writing to file: File2.txt

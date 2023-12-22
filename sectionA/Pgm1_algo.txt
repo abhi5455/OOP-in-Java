@@ -1,0 +1,11 @@
+Step 1:Start
+Step 2:Input: a string s
+Step 3:Create a class PalindromeChecker
+Step 4:Initialise a private string variable inputString in the class
+Step 5:Create a constructor that takes a string parameter and sets
+       inputString to the parameter value
+Step 6:Create a method isPalindrome() in the class
+Step 7:Return true if inputString is a palindrome, false otherwise
+Step 8:Reverse the inputString
+Step 9:If the reversed string is equal to the original string, return true
+Step 10:Otherwise, return false

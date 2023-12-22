@@ -1,0 +1,10 @@
+Step 1:Start
+Step 2:Try block is invoked
+         a. Input two numbers a and b
+         b. Ans = a/b
+         c. Print ans
+Step 3:If an exception occurs catch the exception
+         d. Print e.getmessage()
+Step 4: Finally
+         e. Print operation ended
+Step 5:Stop

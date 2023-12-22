@@ -1,0 +1,15 @@
+Step 1: Start
+Step 2:Input a string s
+Step 3:Create a class CharacterFrequencyCounter
+Step 4:Initialize a private string variable inputString in the class
+Step 5:Create a constructor that takes a string parameter and sets
+       inputString to the parameter value
+Step 6:Create a method calculateCharacterFrequency() in the class
+       Initialize an empty HashMap to store character frequencies
+       - For each character c in inputString
+       - If c is a letter
+       - Convert c to lowercase to treat uppercase and lowercase as the
+         same character
+       - Update the frequency in the HashMap
+       - Display the character frequencies in the HashMap
+Step 7:Stop

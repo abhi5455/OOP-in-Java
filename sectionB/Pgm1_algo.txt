@@ -1,0 +1,17 @@
+Step 1:Start
+Step 2:Creating employee class
+Step 3:Creating constructor for employee class
+Step 4:Method to print salary
+Step 5:Officer class inherits from employee
+Step 6:Constructor for officer class
+Step 7:Manager class inherits from employee
+Step 8;Constructor for manager class
+Step 9:Create main class
+Step 10:Get input for officer
+Step 11:Create officer object
+Step 12:Get input for manager
+Step 13:Create manager object
+Step 14:Print details and salary for officer
+Step 15:Print details and salary for manager
+Step 16:Close the scanner
+Step 17:Stop
