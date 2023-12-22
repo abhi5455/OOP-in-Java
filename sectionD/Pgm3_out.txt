@@ -1,2 +1,0 @@
-Enter line: 10 20 50 23 11
-Sum is: 114

@@ -1,3 +1,0 @@
-String: malayalam
-Key: a
-Frequency is 4

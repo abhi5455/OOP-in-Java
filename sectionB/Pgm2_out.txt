@@ -1,4 +1,0 @@
-Number of sides of:
-- Rectangle: 4
-- Triangle: 3
-- Hexagon: 6

@@ -1,2 +1,0 @@
-Enter n: 32
-Even number

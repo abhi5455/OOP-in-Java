@@ -1,7 +1,0 @@
-Step 1:Start
-Step 2:Create a class MatrixMultiplier
-Step 3:Create constructor to initialise matrices
-Step 4:Create method to take input for matrices
-Step 5: Create method to display the result
-Step 6:Create object for class MatrixMultiplier
-Step 7:Stop

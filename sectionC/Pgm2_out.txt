@@ -1,9 +1,0 @@
-Show output:
-Cow: Moo!
-Cow: Herbivorous
-Elephant: Trumpet!
-Elephant: Herbivorous
-Lion: Roar!
-Lion: Carnivourous
-Bear: Roar!
-Bear: Carnivourous
