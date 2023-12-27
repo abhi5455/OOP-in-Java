@@ -3,13 +3,13 @@
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
     <content url="file://$MODULE_DIR$">
-      <sourceFolder url="file://$MODULE_DIR$/sectionA" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/sectionB" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/sectionC" isTestSource="false" packagePrefix="packageone" />
-      <sourceFolder url="file://$MODULE_DIR$/sectionD" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/sectionE" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/sectionF" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/sectionG" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/sectionA  (Basic Programs)" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/sectionB  (Inheritance)" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/sectionD  (File Handling)" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/sectionE  (Threads)" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/sectionF  (GUI)" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/sectionG  (Searching and Sorting)" isTestSource="false" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
