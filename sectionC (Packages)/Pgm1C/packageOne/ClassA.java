@@ -1,4 +1,4 @@
-package packageOne;
+package Pgm1C.packageOne;
 
 public class ClassA {
     public void methodClassOne() {

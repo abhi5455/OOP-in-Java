@@ -1,5 +1,7 @@
-import packageOne.ClassA;
-import packageTwo.ClassB;
+package Pgm1C.packageOne;
+
+import Pgm1C.packageOne.ClassA;
+import Pgm1C.packageOne.packageTwo.ClassB;
 
 public class Pgm1C {
     public static void main(String[] args) {
