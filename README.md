@@ -1,14 +1,14 @@
 # OOP in Java KTU S3
-### Questions
+## Questions
 
-#### (A) Basic programs using datatype, operators, and control statements in Java:
+### (A) Basic programs using datatype, operators, and control statements in Java:
 
 1) Write a Java program that checks whether a given string is a palindrome or not.
 2) Write a Java Program to find the frequency of a given character in a string.
 3) Write a Java program to multiply two given matrices.
 
 
-#### (B) Object-Oriented Programming Concepts: Problem on the use of constructors, inheritance, method overloading & overriding and polymorphism:
+### (B) Object-Oriented Programming Concepts: Problem on the use of constructors, inheritance, method overloading & overriding and polymorphism:
 
 1) Write a Java program which creates a class named 'Employee' having the following members: Name, Age, Phone number,
 	 Address, Salary. It also has a method named 'printSalary( )' which prints the salary of the Employee. Two classes 'Officer' and 'Manager'
@@ -21,7 +21,7 @@
    structures (Exercise to understand polymorphism).
 
 
-#### (C) Package:
+### (C) Package:
 
 1) Write a Java program which contains three classes animalpackage.Animal, B and Main1. 
    The class animalpackage.Animal is in package ‘packageone’ and contains a method ‘methodClassOne’ that prints a message stating that it is printed from class animalpackage.Animal.
@@ -33,14 +33,14 @@
    Similarly, the ‘carnivorous’ package contains ‘Lion’ and ‘Bear’ that to implement the interface. Design a Main1 class that import these classes and invokes the corresponding methods.
 
    
-#### (D) Handling different types Of files as well as input and output management methods:
+### (D) Handling different types Of files as well as input and output management methods:
 
 1) Write a file handling program in Java with reader/writer.
 2) Write a Java program that read from a file and write to file by handling all file related exceptions.
 3) Write a Java program that reads a line of integers, and then displays each integer, and the sum of all the integers (Use String Tokenizer class of java.util).
 
 
-#### (E) Exception handling and multi-threading applications:
+### (E) Exception handling and multi-threading applications:
 
 1) Write a Java program that shows the usage of try, catch, throws and finally.
 2) Write a Java program that implements a multi-threaded program which has three threads. First thread generates a random integer every 1 second. If the value is even, second thread computes
@@ -48,7 +48,7 @@
 3) Write a Java program that shows thread synchronization.
 
 
-#### (F) Graphics Programming:
+### (F) Graphics Programming:
 
 1) Write a Java program that works as a simple calculator. Arrange Buttons for digits and the + - * % operations properly. Add a text field to display the result. Handle any possible
    exceptions like divide by zero. Use Java Swing.
@@ -56,7 +56,7 @@
    and only one light can be on at a time. No light is on when the program starts.
 
 
-#### (G) Standard Searching and Sorting Algorithms using data structures and algorithms learned from course Data Structures (CST 201):
+### (G) Standard Searching and Sorting Algorithms using data structures and algorithms learned from course Data Structures (CST 201):
 
 1) Write a Java program for the following:
     1) Create a doubly linked list of elements.
