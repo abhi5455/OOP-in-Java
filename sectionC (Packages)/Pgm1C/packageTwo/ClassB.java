@@ -1,4 +1,4 @@
-package Pgm1C.packageOne.packageTwo;
+package Pgm1C.packageTwo;
 
 public class ClassB {
     public void methodClassTwo() {

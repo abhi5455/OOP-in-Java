@@ -1,7 +1,7 @@
-package Pgm1C.packageOne;
+package Pgm1C;
 
 import Pgm1C.packageOne.ClassA;
-import Pgm1C.packageOne.packageTwo.ClassB;
+import Pgm1C.packageTwo.ClassB;
 
 public class Pgm1C {
     public static void main(String[] args) {
