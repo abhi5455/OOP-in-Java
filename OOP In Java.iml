@@ -10,7 +10,7 @@
       <sourceFolder url="file://$MODULE_DIR$/sectionE  (Threads)" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/sectionF  (GUI)" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/sectionG  (Searching and Sorting)" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/sectionC (Packages)" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/sectionC  (Packages)" isTestSource="false" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
