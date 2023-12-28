@@ -26,8 +26,8 @@ public class Pgm1A {
         str = sc.next();
         PalinCharacters pln = new PalinCharacters(str);
         if (pln.isPalindrome() == 1)
-            System.out.println("The string is a palindrome");
+            System.out.println("The string "+str+" is a palindrome");
         else
-            System.out.println("The string is not a palindrome");
+            System.out.println("The string "+str+" is not a palindrome");
     }
 }

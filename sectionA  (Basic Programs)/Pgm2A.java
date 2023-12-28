@@ -26,6 +26,6 @@ public class Pgm2A {
         System.out.print("Key: ");
         key = sc.next().charAt(0);
         Characters chr = new Characters(str);
-        System.out.println("Frequency is " + chr.getFreq(key));
+        System.out.println("Frequency of '"+key+ "' is " + chr.getFreq(key));
     }
 }
