@@ -157,7 +157,7 @@ class makeCalc extends JFrame implements ActionListener
 public class Calculator_NS
 {
     public static void main(String[] args) {
-        makeCalc c=new makeCalc();
+        makeCalc c =new makeCalc();
 
     }
 }
