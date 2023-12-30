@@ -2,7 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-class Calculator extends JFrame implements ActionListener
+class makeCalc extends JFrame implements ActionListener
 {
     String[] str= {"C","<","%","/","7","8","9","*","4","5","6","-","1","2","3","+","^","0",".","="};
     JButton b[];
@@ -10,7 +10,7 @@ class Calculator extends JFrame implements ActionListener
     double n,m,result;
     char op;
 
-    public Calculator()
+    public makeCalc()
     {
         this.setTitle("CALC");
         this.setDefaultCloseOperation(this.EXIT_ON_CLOSE);
@@ -154,10 +154,10 @@ class Calculator extends JFrame implements ActionListener
 
     }
 }
-public class Pgm1F
+public class Calculator_NS
 {
     public static void main(String[] args) {
-        Calculator c=new Calculator();
+        makeCalc c=new makeCalc();
 
     }
 }
