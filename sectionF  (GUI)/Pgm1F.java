@@ -157,7 +157,7 @@ class Calculator extends JFrame implements ActionListener
 public class Pgm1F
 {
     public static void main(String[] args) {
-        Calculator c=new Calculator();
+        Calculator c =new Calculator();
 
     }
 }
