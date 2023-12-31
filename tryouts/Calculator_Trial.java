@@ -6,7 +6,7 @@ import java.util.Queue;
 import java.util.Deque;
 import java.util.LinkedList;
 
-class Makecalc extends JFrame implements ActionListener
+class Makecalculator extends JFrame implements ActionListener
 {
     String[] str= {"C","<","%","/","7","8","9","*","4","5","6","-","1","2","3","+","^","0",".","="};
     JButton b[];
@@ -16,7 +16,7 @@ class Makecalc extends JFrame implements ActionListener
     Deque<String> Q= new LinkedList<>();
     int flag=0;
 
-    public Makecalc()
+    public Makecalculator()
     {
         this.setTitle("CALC");
         this.setDefaultCloseOperation(this.EXIT_ON_CLOSE);
@@ -163,6 +163,6 @@ class Makecalc extends JFrame implements ActionListener
 public class Calculator_Trial
 {
     public static void main(String[] args) {
-        Makecalc c =new Makecalc();
+        Makecalculator c =new Makecalculator();
     }
 }
