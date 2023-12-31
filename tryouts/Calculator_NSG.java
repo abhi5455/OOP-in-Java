@@ -79,7 +79,7 @@ class makeCalc extends JFrame implements ActionListener
                     jtxt1.setText(jtxt1.getText().substring(0, jtxt1.getText().length() - 1));
                 }
                 else
-                    System.out.println("CLEAR THE SCREEN");
+                    System.out.println(" CLEAR THE SCREEN");
                 //  Q.removeLast();
 
             }

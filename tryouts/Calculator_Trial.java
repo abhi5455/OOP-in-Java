@@ -70,6 +70,16 @@ class Makecalculator extends JFrame implements ActionListener
                     Q.remove();
                 }
             }
+            else if (txt.equals("<")) {
+                if (flag == 0) {
+                    jtxt2.setText(jtxt2.getText().substring(0, jtxt2.getText().length() - 1));
+                    jtxt1.setText(jtxt1.getText().substring(0, jtxt1.getText().length() - 1));
+                }
+                else
+                    System.out.println(" CLEAR THE SCREEN");
+                //  Q.removeLast();
+
+            }
             else if (txt.equals("=")&& !jtxt2.getText().isEmpty()&&Q.size()>=2) {
                 /* This Loop activates when '=' is pressed && Last Element is an Operand
                    &&b There is minimum 2 elements in the Queue (1 operand and an operator, the last operand to the
