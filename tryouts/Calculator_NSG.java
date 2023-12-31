@@ -91,6 +91,14 @@ class makeCalc extends JFrame implements ActionListener
                 // Q.removeLast();
 
             }
+            else if (txt.equals("=")&& jtxt2.getText().isEmpty()&&Q.size()<=2){
+                //THIS CONDITION HANDLES THE CASE OF 1 OPERAND AND 1 OPERATOR (eq: 5+ = 5)
+                Q.removeLast(); //REMOVES THE OPERATOR
+                jtxt1.setText(Q.peek());
+                jtxt2.setText(Q.peek());
+                Q.remove(); /* REMOVES THE OPERAND BECAUSE WHEN NEW OPERATOR IS CLICKED,
+                               THE OPERAND IS ADDED TO THE QUEUE ONCE AGAIN*/
+            }
             else if (txt.equals("=")&& !jtxt2.getText().isEmpty()&&Q.size()>=2) {
                 /* THIS LOOP ACTIVATES WHEN, '=' IS PRESSED && LAST ELEMENT IS AN OPERAND
                     && THERE IS MINIMUM 2 ELEMENTS IN THE QUEUE (1 OPERAND AND AN OPERATOR, THE LAST OPERAND TO THE
