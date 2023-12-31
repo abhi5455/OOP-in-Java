@@ -93,7 +93,7 @@ class makeCalc extends JFrame implements ActionListener
 
             }
             else if (txt.equals("=")&& !jtxt2.getText().isEmpty()&&Q.size()>=2) {
-                /* THIS LOOP ACTIVATES WHEN '=' IS PRESSED && LAST ELEMENT IS AN OPERAND
+                /* THIS LOOP ACTIVATES WHEN, '=' IS PRESSED && LAST ELEMENT IS AN OPERAND
                     &&B THERE IS MINIMUM 2 ELEMENTS IN THE QUEUE (1 OPERAND AND AN OPERATOR, THE LAST OPERAND TO THE
                                                                    QUEUE IS ADDED IN THIS LOOP )*/
 
