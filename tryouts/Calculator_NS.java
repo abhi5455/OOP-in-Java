@@ -62,7 +62,7 @@ class makeCalc extends JFrame implements ActionListener
         String txt= b1.getText();
         System.out.println(txt);
         try {
-            if (txt == "C") {
+            if (txt.equals("C")) {
                 flag=0;
                 jtxt1.setText(null);
                 jtxt2.setText(null);
@@ -70,17 +70,17 @@ class makeCalc extends JFrame implements ActionListener
                     Q.remove();
                 }
             }
-            else if (txt == "<") {
+            else if (txt.equals("<")) {
                 if (flag == 0) {
                     jtxt2.setText(jtxt2.getText().substring(0, jtxt2.getText().length() - 1));
                     jtxt1.setText(jtxt1.getText().substring(0, jtxt1.getText().length() - 1));
                 }
                 else
-                    System.out.println("CLEAR THE SCREEN");
+                    System.out.println("CLEAR THE SCREEN USING 'C'");
                 //  Q.removeLast();
 
             }
-            else if (txt == "=") {
+            else if (txt.equals("=")) {
                 //This Loop activates when '=' is pressed.
 
                 Q.add(jtxt2.getText());     //Adding Last operand to the Queue.
