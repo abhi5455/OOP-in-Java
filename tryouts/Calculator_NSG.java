@@ -93,9 +93,9 @@ class makeCalc extends JFrame implements ActionListener
 
             }
             else if (txt.equals("=")&& !jtxt2.getText().isEmpty()&&Q.size()>=2) {
-                /* This Loop activates when '=' is pressed && Last Element is an Operand
-                   &&b There is minimum 2 elements in the Queue (1 operand and an operator, the last operand to the
-                                                                   Queue is added in this loop )*/
+                /* THIS LOOP ACTIVATES WHEN '=' IS PRESSED && LAST ELEMENT IS AN OPERAND
+                    &&B THERE IS MINIMUM 2 ELEMENTS IN THE QUEUE (1 OPERAND AND AN OPERATOR, THE LAST OPERAND TO THE
+                                                                   QUEUE IS ADDED IN THIS LOOP )*/
 
                /*  if(! jtxt2.getText().isEmpty()){
                     //ENSURES WHETHER LAST ELEMENT IS AN OPERAND OR NOT.
@@ -104,7 +104,7 @@ class makeCalc extends JFrame implements ActionListener
                 }*/
 
 
-                Q.add(jtxt2.getText());     //Adding Last operand to the Queue.
+                Q.add(jtxt2.getText());     //ADDING LAST OPERAND TO THE QUEUE.
 
                 System.out.println("\nQUEUE "+Q);
                 /*if (Q.size() < 3) {
@@ -151,28 +151,28 @@ class makeCalc extends JFrame implements ActionListener
 
                 int flag2=0;
                 if (operators.contains(txt)) {
-                    //This Loop Activates when an Operator is Clicked
+                    // THIS LOOP ACTIVATES WHEN AN OPERATOR IS CLICKED
 
-                    //temp stores the last character of String jtxt1
+                    //temp STORES THE LAST CHARACTER OF STRING jtxt1
                     String temp=jtxt1.getText().substring(jtxt1.getText().length()-1,jtxt1.getText().length());
 
                     if(operators.contains(temp)) {
-                        //This Loop will not allow 2 operators to occur simultaneously.
+                        // THIS LOOP WILL NOT ALLOW 2 OPERATORS TO OCCUR SIMULTANEOUSLY.
                         Q.removeLast();
                         Q.add(b1.getText());
                         jtxt1.setText((jtxt1.getText().substring(0,jtxt1.getText().length()-1) + txt));
                         return;
                     }
-                    Q.add(jtxt2.getText());     //To add the previous number to the Queue.
-                    Q.add(b1.getText());    //To add the previous operator to the Queue.
+                    Q.add(jtxt2.getText());     //TO ADD THE PREVIOUS NUMBER TO THE QUEUE.
+                    Q.add(b1.getText());    //TO ADD THE PREVIOUS OPERATOR TO THE QUEUE.
                     flag2=1;
                 }
 
-                //To set the 2 Textfields Correspondingly when Buttons are pressed
+                // TO SET THE 2 TEXTFIELDS CORRESPONDINGLY WHEN BUTTONS ARE PRESSED
                 jtxt1.setText(jtxt1.getText() + txt);
                 jtxt2.setText(jtxt2.getText() + txt);
                 if(flag2==1){
-                    // Clears the 2nd TextField when an operator is Encountered.
+                    // CLEARS THE 2ND TEXTFIELD WHEN AN OPERATOR IS ENCOUNTERED
                     jtxt2.setText(null);
                     System.out.println("\nQUEUE "+Q);
 
