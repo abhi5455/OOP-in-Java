@@ -31,12 +31,12 @@ class makeCalc extends JFrame implements ActionListener
         jtxt2=new JTextField();
         this.add(jtxt1);
         this.add(jtxt2);
-        jtxt1.setBounds(8,10,396,50);
+        jtxt1.setBounds(8,10,395,50);
         jtxt1.setDisabledTextColor(Color.red);
         jtxt1.setFont(new Font("Arial", Font.BOLD, 20));
         jtxt1.setHorizontalAlignment(SwingConstants.RIGHT);
         jtxt1.setForeground(Color.blue);
-        jtxt2.setBounds(8,60,396,75);
+        jtxt2.setBounds(8,60,395,75);
         jtxt2.setFont(new Font("Arial", Font.BOLD, 35));
         jtxt2.setHorizontalAlignment(SwingConstants.RIGHT);
 
