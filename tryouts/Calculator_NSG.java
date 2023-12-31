@@ -2,7 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Queue;
+import java.util.*;
 import java.util.Deque;
 import java.util.LinkedList;
 
@@ -11,10 +11,13 @@ class makeCalc extends JFrame implements ActionListener
     String[] str= {"C","<","%","/","7","8","9","*","4","5","6","-","1","2","3","+","^","0",".","="};
     JButton b[];
     JTextField jtxt1,jtxt2;
-    double n,m,result;
-    char op;
+    double result;
     Deque<String> Q= new LinkedList<>();
     int flag=0;
+    Set<String> operators = new HashSet<>(Arrays.asList("%", "/", "*", "-", "+", "^"));
+    /* Creates a HashSet having all operators.
+       This can be used to compare operators by the function operators.contains(op). */
+
 
     public makeCalc()
     {
@@ -60,7 +63,7 @@ class makeCalc extends JFrame implements ActionListener
     {
         JButton b1=(JButton)e.getSource();
         String txt= b1.getText();
-        System.out.println(txt);
+        System.out.print(txt);
         try {
             if (txt.equals("C")) {
                 flag=0;
@@ -76,25 +79,34 @@ class makeCalc extends JFrame implements ActionListener
                     jtxt1.setText(jtxt1.getText().substring(0, jtxt1.getText().length() - 1));
                 }
                 else
-                    System.out.println("CLEAR THE SCREEN USING 'C'");
+                    System.out.println("CLEAR THE SCREEN");
                 //  Q.removeLast();
 
             }
-            else if (txt.equals("=")) {
-                //This Loop activates when '=' is pressed.
+            else if (txt.equals("=")&& !jtxt2.getText().isEmpty()&&Q.size()>=2) {
+                /* This Loop activates when '=' is pressed && Last Element is an Operand
+                   &&b There is minimum 2 elements in the Queue (1 operand and an operator, the last operand to the
+                                                                   Queue is added in this loop )*/
+
+               /*  if(! jtxt2.getText().isEmpty()){
+                    //ENSURES WHETHER LAST ELEMENT IS AN OPERAND OR NOT.
+                    System.out.println("Enter Last operand");
+                    return;
+                }*/
+
 
                 Q.add(jtxt2.getText());     //Adding Last operand to the Queue.
 
-                System.out.println("Queue "+Q);
-                if (Q.size() < 3) {
+                System.out.println("\nQUEUE "+Q);
+                /*if (Q.size() < 3) {
                     System.out.println("Enter 2 operands and and operation");
                     return;
-                }
+                }*/
                 String item1 = Q.remove();
                 result = Double.parseDouble(item1);
                 while (Q.size() != 0) {
 
-                    if (item1 == "%" || item1 == "/" || item1 == "*" || item1 == "-" || item1 == "+"|| item1=="^") {
+                    if (operators.contains(item1)) {
                         if (item1 == "%") {
                             Double item2 = Double.parseDouble(Q.remove());
                             result %= item2;
@@ -118,7 +130,7 @@ class makeCalc extends JFrame implements ActionListener
 
                     if (Q.size() == 0) {
                         jtxt2.setText(result + "");
-                        System.out.println(result);
+                        System.out.println("RESULT "+result);
                         flag = 1;
                     }
                     item1 = Q.remove();
@@ -126,15 +138,16 @@ class makeCalc extends JFrame implements ActionListener
                 }
 
             }
-            else {
+            else if(b1.getText()!="=") {
+
                 int flag2=0;
-                if (txt .equals("%") || txt.equals("/") || txt.equals("*") || txt.equals("-") || txt.equals("+") || txt.equals("^")) {
+                if (operators.contains(txt)) {
                     //This Loop Activates when an Operator is Clicked
 
                     //temp stores the last character of String jtxt1
                     String temp=jtxt1.getText().substring(jtxt1.getText().length()-1,jtxt1.getText().length());
 
-                    if(temp.equals("%") || temp.equals("/") || temp.equals("*") || temp.equals("-") || temp.equals("+") || temp.equals("^")) {
+                    if(operators.contains(temp)) {
                         //This Loop will not allow 2 operators to occur simultaneously.
                         Q.removeLast();
                         Q.add(b1.getText());
@@ -152,16 +165,17 @@ class makeCalc extends JFrame implements ActionListener
                 if(flag2==1){
                     // Clears the 2nd TextField when an operator is Encountered.
                     jtxt2.setText(null);
+                    System.out.println("\nQUEUE "+Q);
+
                 }
             }
         }
         catch(Exception ex) {
             //ex.printStackTrace();
         }
-        System.out.println("QUEUE "+Q);
     }
 }
-public class Calculator_NS
+public class Calculator_NSG
 {
     public static void main(String[] args) {
         makeCalc c =new makeCalc();
