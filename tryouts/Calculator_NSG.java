@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLOutput;
 import java.util.*;
 import java.util.Deque;
 import java.util.LinkedList;
@@ -76,6 +77,13 @@ class makeCalc extends JFrame implements ActionListener
             else if (txt.equals("<")) {
                 if (flag == 0) {
                     //THE BLOCK CHECKS WHETHER '=' is PRESSED OR NOT
+                    if(operators.contains(Q.peekLast())){
+                        //FOR DELETING AN OPERATOR
+                        Q.removeLast();
+                        System.out.println("\nQUEUE "+Q);
+                        jtxt1.setText(jtxt1.getText().substring(0, jtxt1.getText().length() - 1));
+                    }
+                    //FOR DELETING NUMBERS
                     jtxt2.setText(jtxt2.getText().substring(0, jtxt2.getText().length() - 1));
                     jtxt1.setText(jtxt1.getText().substring(0, jtxt1.getText().length() - 1));
                 }
