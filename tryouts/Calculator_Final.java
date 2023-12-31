@@ -148,7 +148,7 @@ class makeCalcu extends JFrame implements ActionListener
                 }
 
             }
-            else if(b1.getText()!="="){
+            else if(b1.getText()!= "="){
                 int flag2=0;
                 if (operators.contains(txt)) {
                     //This Loop Activates when an Operator is Clicked

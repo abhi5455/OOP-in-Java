@@ -102,7 +102,6 @@ class makeCalc extends JFrame implements ActionListener
                     return;
                 }*/
 
-
                 Q.add(jtxt2.getText());     //ADDING LAST OPERAND TO THE QUEUE.
 
                 System.out.println("\nQUEUE "+Q);
@@ -146,7 +145,7 @@ class makeCalc extends JFrame implements ActionListener
                 }
 
             }
-            else if(b1.getText()!="=") {
+            else if(b1.getText()!= "=") {
 
                 int flag2=0;
                 if (operators.contains(txt)) {
