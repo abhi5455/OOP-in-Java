@@ -14,10 +14,6 @@ class makeCalcu extends JFrame implements ActionListener
     double result;
     Deque<String> Q= new LinkedList<>();
     int flag=0;
-    Set<String> operators = new HashSet<>(Arrays.asList("%", "/", "*", "-", "+", "^"));
-    /* Creates a HashSet having all operators.
-       This can be used to compare operators by the function [ operators.contains(op) ]. */
-
 
     public makeCalcu()
     {
@@ -39,7 +35,6 @@ class makeCalcu extends JFrame implements ActionListener
         jtxt2.setBounds(8,60,396,75);
         jtxt2.setFont(new Font("Arial", Font.BOLD, 35));
         jtxt2.setHorizontalAlignment(SwingConstants.RIGHT);
-
 
         int k=0,x=8,y=135;
         b = new JButton[20];
@@ -76,87 +71,31 @@ class makeCalcu extends JFrame implements ActionListener
             else if (txt.equals("<")) {
                 if (flag == 0) {
                     //THE BLOCK CHECKS WHETHER '=' is PRESSED OR NOT
-                    if(operators.contains(Q.peekLast())){
+                    if(isOperator(Q.peekLast())){
                         //FOR DELETING AN OPERATOR
                         Q.removeLast();
                         System.out.println("\nQUEUE "+Q);
                         jtxt1.setText(jtxt1.getText().substring(0, jtxt1.getText().length() - 1));
                     }
+                    System.out.println(jtxt2.getText().substring(0, jtxt2.getText().length() - 1));
                     //FOR DELETING NUMBERS
                     jtxt2.setText(jtxt2.getText().substring(0, jtxt2.getText().length() - 1));
                     jtxt1.setText(jtxt1.getText().substring(0, jtxt1.getText().length() - 1));
                 }
                 else
                     System.out.println(" CLEAR THE SCREEN");
-                //  Q.removeLast();
-
-            }
-            else if (txt.equals("=")&& !jtxt2.getText().isEmpty()&&Q.size()>=2) {
-                /* This Loop activates when '=' is pressed && Last Element is an Operand
-                   &&b There is minimum 2 elements in the Queue (1st operand and an operator, the last operand to
-                                                                   the Queue is added in this loop )*/
-
-               /*  if(! jtxt2.getText().isEmpty()){
-                    //ENSURES WHETHER LAST ELEMENT IS AN OPERAND OR NOT.
-                    System.out.println("Enter Last operand");
-                    return;
-                }*/
-
-                Q.add(jtxt2.getText());       //Adding Last operand to the Queue.
-
-                System.out.println("\nQUEUE "+Q);
-                if (Q.size() < 3) {
-                    System.out.println("Enter 2 operands and and operation");
-                    return;
-                }
-                String item1 = Q.remove();
-                result = Double.parseDouble(item1);
-                while (!Q.isEmpty()) {
-
-                    double item2;
-                    if (operators.contains(item1)) {
-                        switch(item1){
-                            case "%": item2 = Double.parseDouble(Q.remove());
-                                      result %= item2;
-                                      break;
-                            case "/": item2 = Double.parseDouble(Q.remove());
-                                result /= item2;
-                                break;
-                            case "*": item2 = Double.parseDouble(Q.remove());
-                                result *= item2;
-                                break;
-                            case "-": item2 = Double.parseDouble(Q.remove());
-                                result -= item2;
-                                break;
-                            case "+": item2 = Double.parseDouble(Q.remove());
-                                result += item2;
-                                break;
-                            case "^": item2 = Double.parseDouble(Q.remove());
-                                result = Math.pow(result,item2);
-                                break;
-
-                        }
-                    }
-
-                    if (Q.isEmpty()) {
-                        jtxt2.setText(result + "");
-                        System.out.println(result);
-                        flag = 1;
-                    }
-                    item1 = Q.remove();
-
-                }
+                // Q.removeLast();
 
             }
             else if(b1.getText()!= "="){
                 int flag2=0;
-                if (operators.contains(txt)) {
+                if (isOperator(txt)) {
                     //This Loop Activates when an Operator is Clicked
 
                     //temp stores the last character of String jtxt1
                     String temp=jtxt1.getText().substring(jtxt1.getText().length()-1);
 
-                    if(operators.contains(temp)) {
+                    if(isOperator(temp)) {
                         //This Loop will not allow 2 operators to occur simultaneously.
                         Q.removeLast();
                         Q.add(b1.getText());
@@ -178,9 +117,81 @@ class makeCalcu extends JFrame implements ActionListener
 
                 }
             }
+            else if (txt.equals("=")) {
+                // This Loop activates when '=' is pressed.
+
+                if( jtxt2.getText().isEmpty()){
+                    //ENSURES WHETHER LAST ELEMENT IS AN OPERAND OR NOT.
+                    //THIS CONDITION ALSO HANDLES THE CASE OF 1 OPERAND AND 1 OPERATOR (eg: 5+ = 5)
+                    Q.removeLast();
+                    jtxt1.setText(jtxt1.getText().substring(0,jtxt1.getText().length()-1));
+                    calculateValue();
+                }
+                else {
+                    Q.add(jtxt2.getText());     //Adding Last operand to the Queue.
+                    calculateValue();           //Calulates the Result
+                }
+            }
         }
         catch(Exception ex) {
             //ex.printStackTrace();
+        }
+    }
+    private boolean isOperator(String item){
+        if (item .equals("%") || item.equals("/") || item.equals("*") || item.equals("-") 
+                || item.equals("+") || item.equals("^")) {
+            return true;
+        }
+        return false;
+    }
+    private void calculateValue(){
+        //This Function Calulates the Result
+        try {
+            System.out.println("\nQUEUE " + Q);
+
+            String item1 = Q.remove();
+            result = Double.parseDouble(item1);
+            while (!Q.isEmpty()) {
+                double item2;
+                if (isOperator(item1)) {
+                    switch (item1) {
+                        case "%":
+                            item2 = Double.parseDouble(Q.remove());
+                            result %= item2;
+                            break;
+                        case "/":
+                            item2 = Double.parseDouble(Q.remove());
+                            result /= item2;
+                            break;
+                        case "*":
+                            item2 = Double.parseDouble(Q.remove());
+                            result *= item2;
+                            break;
+                        case "-":
+                            item2 = Double.parseDouble(Q.remove());
+                            result -= item2;
+                            break;
+                        case "+":
+                            item2 = Double.parseDouble(Q.remove());
+                            result += item2;
+                            break;
+                        case "^":
+                            item2 = Double.parseDouble(Q.remove());
+                            result = Math.pow(result, item2);
+                            break;
+
+                    }
+                }
+                item1 = Q.remove();
+
+            }
+        }catch(Exception e3){
+            //e3.printStackTrace();
+        }
+        finally{
+            jtxt2.setText(result + "");
+            System.out.println(result);
+            flag = 1;
         }
     }
 }
