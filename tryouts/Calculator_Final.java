@@ -183,7 +183,6 @@ class makeCalcu extends JFrame implements ActionListener
                     }
                 }
                 item1 = Q.remove();
-
             }
         }catch(Exception e3){
             //e3.printStackTrace();
