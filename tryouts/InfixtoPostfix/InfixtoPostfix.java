@@ -1,7 +1,7 @@
 package InfixtoPostfix;
 
 import java.util.LinkedList;
-import java.util.Queue;
+import java.util.Deque;
 import java.util.Stack;
 
 /*public class InfixtoPostfix{
@@ -11,11 +11,13 @@ import java.util.Stack;
 }*/
 public class InfixtoPostfix {
 
-    protected Stack<String> S= new Stack<>();
-    protected Stack<String> ES= new Stack<>();
+    protected Deque<String> S= new LinkedList<>();
+    protected Stack<Double> ES= new Stack<>();
 
-    protected Queue<String> Q= new LinkedList<>();
-    String[] str={"(","3","+","2",")","*","5"};
+    protected Deque<String> Q= new LinkedList<>();
+    double result;
+    String optr;
+    //String[] str={"(","3","+","2",")","*","5"};
     /*public InfixtoPostfi(){
         int i=0;
         while(i<=6){
@@ -24,15 +26,50 @@ public class InfixtoPostfix {
         System.out.println("QUEUE "+Q);
         ConvertInfixtoPostfix();
     }*/
-    public void calculate(Queue<String> Q){
+    public double calculate(Deque<String> Q){
         this.Q=Q;
         ConvertInfixtoPostfix();
-        evaluatePostfix();
+        System.out.println(evaluatePostfix());
         System.out.println("STACK "+S);
-        //return Q;
+        return result;
     }
-    private float evaluatePostfix(){
-
+    private double evaluatePostfix(){
+        while(!S.isEmpty()) {
+            if(S.peek().equals(" ")){
+                S.remove();
+            }
+            if (Check.isOperator(S.peek())) {
+                optr = S.remove();
+                double x = ES.pop();
+                double y = ES.pop();
+                switch (optr) {
+                    case "%":
+                        result = y % x;
+                        break;
+                    case "/":
+                        result = y / x;
+                        break;
+                    case "*":
+                        result = y * x;
+                        break;
+                    case "-":
+                        result = y - x;
+                        break;
+                    case "+":
+                        result = y + x;
+                        break;
+                    case "^":
+                        result = Math.pow(y, x);
+                        break;
+                }
+                ES.push(result);
+                if (S.isEmpty()) {
+                    return result;
+                }
+            } else {
+                ES.push(Double.parseDouble(S.remove()));
+            }
+        }
         return 0;
     }
     private void ConvertInfixtoPostfix() {
@@ -48,11 +85,12 @@ public class InfixtoPostfix {
                 while(!S2.peek().equals("(")) {
                     S.add(S2.pop());
                 }
+                // Removing ")" from S2 and Q
                 S2.pop();
                 Q.remove();
             }
             else if (!Check.isOperator(Q.peek())) {
-                S.push(Q.remove());
+                S.add(Q.remove());
             }
             else if(Check.isOperator(Q.peek())){
                 while(Check.ICP(Q.peek()) <= Check.ISP(S2.peek())){
@@ -62,8 +100,6 @@ public class InfixtoPostfix {
             }
 
         }
-
-        System.out.println(S);
     }
 }
 class Check{

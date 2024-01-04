@@ -1,3 +1,4 @@
+import InfixtoPostfix.*;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -11,6 +12,7 @@ class MakuCalculatoR extends JFrame implements ActionListener
     JButton[] b;
     String[] str={"7", "8","9","*","4","5","6","-","1","2","3","+","^","0",".","="};
     Deque<String> Q =new LinkedList<>();
+    double result;
     boolean flag=false;
 
     public MakuCalculatoR()
@@ -75,7 +77,7 @@ class MakuCalculatoR extends JFrame implements ActionListener
             for(int j=0;j<4;j++){
                 b[k]=new JButton(str[z++]);
                 b[k].setBounds(x,y,90,90);
-                b[k].setFont(new Font("Ariel",Font.BOLD,30));
+                b[k].setFont(new Font("Ariel",Font.BOLD,28));
                 b[k].addActionListener(this);
                 this.add(b[k++]);
                 x+=94;
@@ -98,6 +100,7 @@ class MakuCalculatoR extends JFrame implements ActionListener
                 jtxt2.setText(null);
                 System.out.println();
                 Q.removeAll(Q);
+                flag=false;
             }
             else if (txt.equals("<")) {
                 jtxt1.setText(jtxt1.getText().substring(0, jtxt1.getText().length() - 1));
@@ -105,29 +108,44 @@ class MakuCalculatoR extends JFrame implements ActionListener
             }
             else if (!txt.equals("=")) {
 
-                if (jtxt1.getText().isEmpty() && txt.equals("-")) {
+                if ((jtxt1.getText().isEmpty() && txt.equals("-") )) {
                     // Helps to add 1st -ve element
                     jtxt2.setText("-");
                     jtxt1.setText("-");
 
-                } else if (jtxt1.getText().isEmpty() && isOperator(txt)) {
-                    // P`revents 1 element as operator
+                }
+                else if (txt.equals("-")&&jtxt1.getText().substring(jtxt1.getText().length()-1).equals("(")){
+                    jtxt1.setText(jtxt1.getText()+"-");
+                    jtxt2.setText("-");
+                    return;
+                }
+                else if (jtxt1.getText().isEmpty() && isOperator(txt)) {
+                    // Prevents 1 element as operator
                     return;
                 }
                 boolean flag2 = false;
-                if (isOperator(txt)) {
+                if (isOperator(txt)||isBracket(txt)) {
+
                     String temp = jtxt1.getText().substring(jtxt1.getText().length() - 1);
-                    if (isOperator(temp)) {
+                    if (isOperator(temp)&& !isBracket(txt)) {
                         Q.removeLast();
                         Q.add(txt);
                         jtxt1.setText(jtxt1.getText().substring(0, jtxt1.getText().length() - 1) + txt);
                         return;
                     }
-                    if (!flag) {
+                    if (!flag&&!txt.equals("(")) {
+                        /*if(jtxt2.getText().isEmpty()&&txt.equals("-")){
+
+                        }*/
                         Q.add(jtxt2.getText());
                     }
                     Q.add(txt);
                     flag2 = true;
+                    if(isBracket(txt)){
+                        jtxt1.setText(jtxt1.getText() + txt);
+                        jtxt2.setText(null);
+                        return;
+                    }
                 }
                 //sets the 2 textFields
                 jtxt1.setText(jtxt1.getText() + txt);
@@ -138,25 +156,46 @@ class MakuCalculatoR extends JFrame implements ActionListener
                     System.out.println("\nQUEUE " + Q);
                 }
             }
+            /*else if (txt.equals("=")&& jtxt2.getText().isEmpty()&&Q.size()<=2){
+                //THIS CONDITION HANDLES THE CASE OF 1 OPERAND AND 1 OPERATOR (eq: 5+ = 5)
+                Q.removeLast(); //REMOVES THE OPERATOR
+                jtxt1.setText(Q.peek());
+                jtxt2.setText(Q.peek());
+                Q.remove(); /* REMOVES THE OPERAND BECAUSE WHEN NEW OPERATOR IS CLICKED,
+                               THE OPERAND IS ADDED TO THE QUEUE ONCE AGAIN
+            }*/
             else if (txt.equals("=")) {
 
                 flag = true;
-                if (jtxt2.getText().isEmpty()) {
+                if (jtxt2.getText().isEmpty() && !isBracket(Q.peekLast())) {
+
                     Q.removeLast();
                     jtxt1.setText(jtxt1.getText().substring(0, jtxt1.getText().length() - 1));
                     System.out.println("\nQUEUE " + Q);
-                    return;
                 }
-                Q.add(jtxt2.getText());
+                else if(!jtxt2.getText().isEmpty()) {
+                    // adds the last operand
+                    Q.add(jtxt2.getText());
+                }
+                InfixtoPostfix I= new InfixtoPostfix();
                 System.out.println("\nQUEUE " + Q);
+                result=I.calculate(Q);
+                System.out.println("\nRESULT "+result);
+                jtxt2.setText(Double.toString(result));
             }
         }catch(Exception e1){
-            //e1.printStackTrace();
+           // e1.printStackTrace();
         }
     }
     private boolean isOperator(String item){
         if (item .equals("%") || item.equals("/") || item.equals("*") || item.equals("-")
                 || item.equals("+") || item.equals("^")) {
+            return true;
+        }
+        return false;
+    }
+    private boolean isBracket(String item){
+        if(item.equals("(")||item.equals(")")){
             return true;
         }
         return false;
