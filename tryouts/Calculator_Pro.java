@@ -1,11 +1,11 @@
-import InfixtoPostfix.*;
+import OperatorPrecedence.*;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.Deque;
 import java.util.LinkedList;
 
-class MakuCalculatoR extends JFrame implements ActionListener
+class MakeCalculator extends JFrame implements ActionListener
 {
     JTextField jtxt1 = new JTextField();
     JTextField jtxt2 = new JTextField();
@@ -14,8 +14,9 @@ class MakuCalculatoR extends JFrame implements ActionListener
     Deque<String> Q =new LinkedList<>();
     double result;
     boolean flag=false;
+    OperatorPrecedence OP= new OperatorPrecedence();
 
-    public MakuCalculatoR()
+    public MakeCalculator()
     {
         this.setTitle("STANDARD CALC");
         this.setSize(401,637);
@@ -120,7 +121,7 @@ class MakuCalculatoR extends JFrame implements ActionListener
                     return;
                 }
                 else if (jtxt1.getText().isEmpty() && isOperator(txt)) {
-                    // Prevents 1 element as operator
+                    // Prevents 1st element as operator
                     return;
                 }
                 boolean flag2 = false;
@@ -134,9 +135,6 @@ class MakuCalculatoR extends JFrame implements ActionListener
                         return;
                     }
                     if (!flag&&!txt.equals("(")) {
-                        /*if(jtxt2.getText().isEmpty()&&txt.equals("-")){
-
-                        }*/
                         Q.add(jtxt2.getText());
                     }
                     Q.add(txt);
@@ -177,11 +175,11 @@ class MakuCalculatoR extends JFrame implements ActionListener
                     // adds the last operand
                     Q.add(jtxt2.getText());
                 }
-                InfixtoPostfix I= new InfixtoPostfix();
                 System.out.println("\nQUEUE " + Q);
-                result=I.calculate(Q);
+                result= OP.calculate(Q);
                 System.out.println("\nRESULT "+result);
                 jtxt2.setText(Double.toString(result));
+                Q.add(Double.toString(result));
             }
         }catch(Exception e1){
            // e1.printStackTrace();
@@ -205,6 +203,6 @@ class MakuCalculatoR extends JFrame implements ActionListener
 public class Calculator_Pro
 {
     public static void main(String[] args) {
-        new MakuCalculatoR();
+        new MakeCalculator();
     }
 }

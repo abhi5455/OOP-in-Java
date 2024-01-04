@@ -1,15 +1,10 @@
-package InfixtoPostfix;
+package OperatorPrecedence;
 
 import java.util.LinkedList;
 import java.util.Deque;
 import java.util.Stack;
 
-/*public class InfixtoPostfix{
-    public static void main(String[] args){
-        new InfixtoPostfi();
-    }
-}*/
-public class InfixtoPostfix {
+public class OperatorPrecedence {
 
     protected Deque<String> S= new LinkedList<>();
     protected Stack<Double> ES= new Stack<>();
@@ -17,20 +12,11 @@ public class InfixtoPostfix {
     protected Deque<String> Q= new LinkedList<>();
     double result;
     String optr;
-    //String[] str={"(","3","+","2",")","*","5"};
-    /*public InfixtoPostfi(){
-        int i=0;
-        while(i<=6){
-            Q.add(str[i++]);
-        }
-        System.out.println("QUEUE "+Q);
-        ConvertInfixtoPostfix();
-    }*/
+
     public double calculate(Deque<String> Q){
         this.Q=Q;
         ConvertInfixtoPostfix();
         System.out.println(evaluatePostfix());
-        System.out.println("STACK "+S);
         return result;
     }
     private double evaluatePostfix(){
