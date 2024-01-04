@@ -104,6 +104,11 @@ class MakeCalculator extends JFrame implements ActionListener
                 flag=false;
             }
             else if (txt.equals("<")) {
+                if(isOperator(jtxt1.getText().substring(jtxt1.getText().length()-1))){
+                    //For Removing previous operator
+                    Q.removeLast();
+                    flag2=true;
+                }
                 jtxt1.setText(jtxt1.getText().substring(0, jtxt1.getText().length() - 1));
                 jtxt2.setText(jtxt2.getText().substring(0, jtxt2.getText().length() - 1));
             }
