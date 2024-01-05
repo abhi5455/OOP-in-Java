@@ -74,7 +74,7 @@ public class OperatorPrecedence {
                 while(!S2.peek().equals("(")) {
                     S.add(S2.pop());
                 }
-                // Removing ")" from S2 and Q
+                // Removing close bracket ")" from S2 and Q
                 S2.pop();
                 Q.remove();
             }
