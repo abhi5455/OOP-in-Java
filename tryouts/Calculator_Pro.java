@@ -1,22 +1,25 @@
+package xyz;
 import OperatorPrecedence.*;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.Deque;
 import java.util.LinkedList;
 
-class MakeCalculator extends JFrame implements ActionListener
+class MakeCalc extends JFrame implements ActionListener
 {
     JTextField jtxt1 = new JTextField();
     JTextField jtxt2 = new JTextField();
     JButton[] b;
     String[] str={"7", "8","9","*","4","5","6","-","1","2","3","+","^","0",".","="};
     Deque<String> Q =new LinkedList<>();
+    Deque<String> Q2 =new LinkedList<>();
     double result;
-    boolean flag=false;
+    boolean flag=false,flag2=false;
     OperatorPrecedence OP= new OperatorPrecedence();
 
-    public MakeCalculator()
+    public MakeCalc()
     {
         this.setTitle("STANDARD CALC");
         this.setSize(401,637);
@@ -104,6 +107,29 @@ class MakeCalculator extends JFrame implements ActionListener
                 flag=false;
             }
             else if (txt.equals("<")) {
+                if(flag){
+                    // Checks whether "=" is pressed
+                   // Q.remove(); //Removing result from Q
+                   // Q.addAll(Q2);
+                    jtxt2.setText(null);
+                    Q.removeLast();
+                    Q.removeLast();//Removing Last Operator and Operand
+                    //flag=false;
+                    while(!isOperator(jtxt1.getText().substring(jtxt1.getText().length()-1))){
+                        jtxt1.setText(jtxt1.getText().substring(0,jtxt1.getText().length()-1));
+                    }
+                    jtxt1.setText(jtxt1.getText().substring(0,jtxt1.getText().length()-1));
+                    // Removing Last operand from jtxt1
+                    System.out.println(Q);
+                    return;
+                    /*System.out.println("CLEAR THE SCREEN");
+                    return;*/
+                }
+                if(isOperator(jtxt1.getText().substring(jtxt1.getText().length()-1))){
+                    //For Removing previous operator
+                    Q.removeLast();
+                    flag2=true;
+                }
                 jtxt1.setText(jtxt1.getText().substring(0, jtxt1.getText().length() - 1));
                 jtxt2.setText(jtxt2.getText().substring(0, jtxt2.getText().length() - 1));
             }
@@ -113,18 +139,20 @@ class MakeCalculator extends JFrame implements ActionListener
                     // Helps to add 1st -ve element
                     jtxt2.setText("-");
                     jtxt1.setText("-");
+                    flag=false; //Confirms that "=" is not pressed
 
                 }
                 else if (txt.equals("-")&&jtxt1.getText().substring(jtxt1.getText().length()-1).equals("(")){
+                    // Helps to add 1st -ve element after open bracket "("
                     jtxt1.setText(jtxt1.getText()+"-");
                     jtxt2.setText("-");
+                    flag=false; //Confirms that "=" is not pressed
                     return;
                 }
                 else if (jtxt1.getText().isEmpty() && isOperator(txt)) {
                     // Prevents 1st element as operator
                     return;
                 }
-                boolean flag2 = false;
                 if (isOperator(txt)||isBracket(txt)) {
 
                     String temp = jtxt1.getText().substring(jtxt1.getText().length() - 1);
@@ -132,27 +160,33 @@ class MakeCalculator extends JFrame implements ActionListener
                         Q.removeLast();
                         Q.add(txt);
                         jtxt1.setText(jtxt1.getText().substring(0, jtxt1.getText().length() - 1) + txt);
+                        flag=false; //Confirms that "=" is not pressed
                         return;
                     }
-                    if (!flag&&!txt.equals("(")) {
+                    if (!flag2&&!txt.equals("(")&&!flag) {
+                        //checks whether "<" button is presser or not
                         Q.add(jtxt2.getText());
+                        /*if(! isOperator(Q.peekLast())){
+                            // handles the case where 2(2+3)=2*(2+3)
+                            Q.add("*");
+                        }*/
                     }
+                    flag=false; //Confirms that "=" is not pressed
                     Q.add(txt);
-                    flag2 = true;
+                    flag2 = false;
                     if(isBracket(txt)){
                         jtxt1.setText(jtxt1.getText() + txt);
                         jtxt2.setText(null);
                         return;
                     }
+                    jtxt1.setText(jtxt1.getText() + txt);
+                    jtxt2.setText(null);
+                    return;
                 }
                 //sets the 2 textFields
                 jtxt1.setText(jtxt1.getText() + txt);
                 jtxt2.setText(jtxt2.getText() + txt);
 
-                if (flag2) {
-                    jtxt2.setText(null);
-                    System.out.println("\nQUEUE " + Q);
-                }
             }
             /*else if (txt.equals("=")&& jtxt2.getText().isEmpty()&&Q.size()<=2){
                 //THIS CONDITION HANDLES THE CASE OF 1 OPERAND AND 1 OPERATOR (eq: 5+ = 5)
@@ -162,27 +196,29 @@ class MakeCalculator extends JFrame implements ActionListener
                 Q.remove(); /* REMOVES THE OPERAND BECAUSE WHEN NEW OPERATOR IS CLICKED,
                                THE OPERAND IS ADDED TO THE QUEUE ONCE AGAIN
             }*/
-            else if (txt.equals("=")) {
+            else if (txt.equals("=")&&!flag) {
 
                 flag = true;
                 if (jtxt2.getText().isEmpty() && !isBracket(Q.peekLast())) {
 
                     Q.removeLast();
                     jtxt1.setText(jtxt1.getText().substring(0, jtxt1.getText().length() - 1));
-                    System.out.println("\nQUEUE " + Q);
+                   // System.out.println("\nQUEUE " + Q);
                 }
                 else if(!jtxt2.getText().isEmpty()) {
+                    System.out.println("dfgh"+Q);
                     // adds the last operand
                     Q.add(jtxt2.getText());
                 }
-                System.out.println("\nQUEUE " + Q);
-                result= OP.calculate(Q);
-                System.out.println("\nRESULT "+result);
+                Q2.addAll(Q); //Copying the content from Q to Q2
+                System.out.println("\nQUEUE " + Q2);
+                result= OP.calculate(Q2);
+                System.out.println("RESULT "+result);
                 jtxt2.setText(Double.toString(result));
-                Q.add(Double.toString(result));
+                //Q.add(Double.toString(result));
             }
         }catch(Exception e1){
-           // e1.printStackTrace();
+           e1.printStackTrace();
         }
     }
     private boolean isOperator(String item){
@@ -203,6 +239,6 @@ class MakeCalculator extends JFrame implements ActionListener
 public class Calculator_Pro
 {
     public static void main(String[] args) {
-        new MakeCalculator();
+        new MakeCalc();
     }
 }

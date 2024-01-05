@@ -21,9 +21,7 @@ public class OperatorPrecedence {
     }
     private double evaluatePostfix(){
         while(!S.isEmpty()) {
-            if(S.peek().equals(" ")){
-                S.remove();
-            }
+
             if (Check.isOperator(S.peek())) {
                 optr = S.remove();
                 double x = ES.pop();
@@ -64,6 +62,11 @@ public class OperatorPrecedence {
         Q.add(")");
         while (!Q.isEmpty()) {
 
+            if(Q.peek().isEmpty()){
+                // checks whether empty string is entered in the Q
+                Q.remove();
+                continue;
+            }
             if(Q.peek().equals("(")){
                 S2.push(Q.remove());
             }
@@ -100,10 +103,10 @@ class Check{
         switch(optr){
             case "+":
             case "-":
-                        return 1;
+                return 1;
             case "*":
             case "/":
-                        return 3;
+                return 3;
             case "^":   return 6;
         }
         return -1;
@@ -112,10 +115,10 @@ class Check{
         switch(optr){
             case "+":
             case "-":
-                        return 2;
+                return 2;
             case "*":
             case "/":
-                        return 4;
+                return 4;
             case "^":   return 5;
         }
         return -1;
