@@ -107,6 +107,7 @@ class MakeCalc extends JFrame implements ActionListener
                 flag=false;
             }
             else if (txt.equals("<")) {
+<<<<<<< HEAD
                 if(flag){
                     // Checks whether "=" is pressed
                    // Q.remove(); //Removing result from Q
@@ -125,6 +126,8 @@ class MakeCalc extends JFrame implements ActionListener
                     /*System.out.println("CLEAR THE SCREEN");
                     return;*/
                 }
+=======
+>>>>>>> origin/master
                 if(isOperator(jtxt1.getText().substring(jtxt1.getText().length()-1))){
                     //For Removing previous operator
                     Q.removeLast();
